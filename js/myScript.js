@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     $("#kudoDesc").on('keyup', function() {
+        var test 1 test2;
         var words = this.value.match(/\S+/g).length;
         if (words > 100) {
             // Split the string on first 100 words and rejoin on spaces
