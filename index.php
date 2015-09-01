@@ -22,6 +22,7 @@ if (isset($_POST["submit"])) {
             $kudoType = "";
             $kudoTitle = "";
             $kudoDesc = "";
+            unset($_POST["submit"]);
             header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
                   exit();
         } else {
@@ -73,51 +74,55 @@ if (isset($_POST["submit"])) {
             <a href="http://www.lsa.umich.edu/english"><img src="img/banner.png" id="banner" width=388px height="85" alt="English Department website"></a><br>
           </header>
           <div id="headerBarBtm"></div>
-          <div class="form">
+          <div id="kudoForm" class="form">
             <h1>English Kudos</h1>
             <form action="index.php" method="post">
               <div id="userInfo" >
                 <div class="row-fluid clearfix">
                   <div class="form-group">
                     <label for="userFname" >First name</label>
-                    <input class="form-control input-sm" type="text" tabindex="100" required name="userFname" autofocus />
+                    <input class="form-control input-sm" type="text" tabindex="100" required id="userFname" name="userFname" autofocus />
                     <label for="userLname">Last name</label>
-                    <input class="form-control input-sm" type="text" tabindex="110" required name="userLname" />
+                    <input class="form-control input-sm" type="text" tabindex="110" required id="userLname" name="userLname" />
                   </div>
                   <hr>
                   <label for="kudoType">Select a category:</label>
                   <label class="radio">
-                    <input type="radio" tabindex="150" required name="kudoType" id="inlineRadiokudoType" value="award"> Award
+                    <input type="radio" tabindex="150" required name="kudoType" id="inlineRadiokudoType" value="Award"> Award
                   </label>
                   <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType2" value="conf_lect"> Conference / Lecture
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType2" value="Conf_Lect"> Conference / Lecture
                   </label>
                   <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="publication"> Publication
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Publication"> Publication
                   </label>
                   <div class="form-group">
                     <label for="kudoTitle">Title / Name</label>
-                    <input class="form-control input-sm" type="text" tabindex="160" required name="kudoTitle" />
+                    <input class="form-control input-sm" type="text" tabindex="160" required id="kudoTitle" name="kudoTitle" />
                     <label for="kudoDesc">Description <small><em>100 word limit</em></small></label>
-                    <textarea class="form-control input-sm" rows=5  tabindex="170" required id="kudoDesc" name="kudoDesc"></textarea>
+                    <textarea class="form-control input-sm" rows=5  tabindex="170" required id="kudoDesc" id="kudoDesc" name="kudoDesc"></textarea>
                     Total word count: <span id="display_count">0</span> words. Words left: <span id="word_left">100</span>
                   </div>
                 </div>
               </div>
-              <div class="row-fluid clearfix btnControl">
-                <button class="btn btn-success btn-sm" name="submit" id="submit" >Submit</button>
+              <div id="submitBtn" class="row-fluid clearfix btnControl">
+                <button class="btn btn-success btn-xs" name="submit" id="submit" >Submit</button>
               </div>
             </form>
           </div>
           <div id="footerInnerWrap">
             <div class="footerClmn">
               <p><strong>Dept. of English Language and Literature</strong></p>
-              <p><a href="/english/" class="footerLinkFirst">home</a> <a href="/english/mission_statement.asp" class="footerLink">mission statement</a><br> <a href="/english/sitemap.asp" class="footerLink">sitemap</a> <a href="/english/contact.asp" class="footerLink">contact</a></p>
+              <p><a href="/english/" class="footerLinkFirst">home</a> 
+              <a href="/english/mission_statement.asp" class="footerLink">mission statement</a><br>
+              <a href="/english/sitemap.asp" class="footerLink">sitemap</a>
+              <a href="/english/contact.asp" class="footerLink">contact</a></p>
             </div>
             <div class="footerClmn">435 S. State Street, 3187 Angell Hall<br>
               Ann Arbor, MI 48109-1003 <br>
             Phone: (734) 764-6330 Fax: (734) 763-3128</div>
-            <div class="footerClmn">© 2009 <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a><br>
+          <div class="footerClmn">
+            © 2009 <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a><br>
           </div>
         </div>
         <div class="clearAll"></div>

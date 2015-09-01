@@ -7,11 +7,11 @@ $(document).ready(function() {
             var trimmed = $(this).val().split(/\s+/, 100).join(" ");
             // Add a space at the end to keep new typing making new words
             $(this).val(trimmed + " ");
+            alert("You have exceeded the 100 word limit");
         }
         else {
             $('#display_count').text(words);
             $('#word_left').text(100-words);
         }
     });
-
 });
