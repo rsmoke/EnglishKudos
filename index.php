@@ -7,31 +7,30 @@ $uniqname = $login_name;
 
 if (isset($_POST["submit"])) {
 // form was submitted
-  $userFname = mysqli_real_escape_string($db, (trim($_POST["userFname"])));
-  $userLname = mysqli_real_escape_string($db, (trim($_POST["userLname"])));
-  $kudoType = trim($_POST["kudoType"]);
-  $kudoTitle = mysqli_real_escape_string($db, (trim($_POST["kudoTitle"])));
-  $kudoDesc = mysqli_real_escape_string($db, (trim($_POST["kudoDesc"])));
-  //insert data into database
-  try {
-    $sql = "INSERT INTO `tbl_kudos` (`userFname`, `userLname`, `uniqname`, `kudoType`, `kudoTitle`, `kudoDesc`) VALUES ('$userFname', '$userLname', '$uniqname', '$kudoType', '$kudoTitle', '$kudoDesc')";
-    if ($db->query($sql) === TRUE) {
-    //echo "New record created successfully";
-      $userFname = "";
-      $userLname = "";
-      $kudoType = "";
-      $kudoTitle = "";
-      $kudoDesc = "";
-      echo "<script type='text/javascript'>alert(\"Sucessfully submitted\");</script>";
-      header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
-              exit();
-    } else {
-    die(db_fatal_error("Database query failed. "));
+    $userFname = mysqli_real_escape_string($db, (trim($_POST["userFname"])));
+    $userLname = mysqli_real_escape_string($db, (trim($_POST["userLname"])));
+    $kudoType = trim($_POST["kudoType"]);
+    $kudoTitle = mysqli_real_escape_string($db, (trim($_POST["kudoTitle"])));
+    $kudoDesc = mysqli_real_escape_string($db, (trim($_POST["kudoDesc"])));
+    //insert data into database
+    try {
+        $sql = "INSERT INTO `tbl_kudos` (`userFname`, `userLname`, `uniqname`, `kudoType`, `kudoTitle`, `kudoDesc`) VALUES ('$userFname', '$userLname', '$uniqname', '$kudoType', '$kudoTitle', '$kudoDesc')";
+        if ($db->query($sql) === true) {
+        //echo "New record created successfully";
+            $userFname = "";
+            $userLname = "";
+            $kudoType = "";
+            $kudoTitle = "";
+            $kudoDesc = "";
+            header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
+                  exit();
+        } else {
+            die(db_fatal_error("Database query failed. "));
+        }
+            $db->close();
+    } catch (Exception $e) {
+        $result[] = $e->getMessage();
     }
-    $db->close();
-  } catch (Exception $e){
-    $result[] = $e->getMessage();
-  }
 }
 ?>
 <!DOCTYPE html>
@@ -83,7 +82,7 @@ if (isset($_POST["submit"])) {
                     <label for="userFname" >First name</label>
                     <input class="form-control input-sm" type="text" tabindex="100" required name="userFname" autofocus />
                     <label for="userLname">Last name</label>
-                    <input class="form-control input-sm" type="text" tabindex="110"required name="userLname" />
+                    <input class="form-control input-sm" type="text" tabindex="110" required name="userLname" />
                   </div>
                   <hr>
                   <label for="kudoType">Select a category:</label>
@@ -126,10 +125,10 @@ if (isset($_POST["submit"])) {
       <div id="rightShadow"></div>
     </div>
   </div>
-  <script src="js/jquery-1.11.2.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/bootstrap-formhelpers.min.js"></script>
-  <script src="js/h5Validate.js"></script>
-  <script src="js/myScript.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-formhelpers.min.js"></script>
+  <script type="text/javascript" src="js/h5Validate.js"></script>
+  <script type="text/javascript" src="js/myScript.js"></script>
 </body>
 </html>
