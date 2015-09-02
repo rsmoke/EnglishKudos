@@ -3,37 +3,46 @@ session_start();
 require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configEnglishKudos.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
 
-$uniqname = $login_name;
+$recordID = $_SESSION['userEntry'];
 
-if (isset($_POST["submit"])) {
-// form was submitted
-    $userFname = mysqli_real_escape_string($db, (trim($_POST["userFname"])));
-    $userLname = mysqli_real_escape_string($db, (trim($_POST["userLname"])));
-    $kudoType = trim($_POST["kudoType"]);
-    $kudoTitle = mysqli_real_escape_string($db, (trim($_POST["kudoTitle"])));
-    $kudoDesc = mysqli_real_escape_string($db, (trim($_POST["kudoDesc"])));
-    //insert data into database
-    try {
-        $sql = "INSERT INTO `tbl_kudos` (`userFname`, `userLname`, `uniqname`, `kudoType`, `kudoTitle`, `kudoDesc`) VALUES ('$userFname', '$userLname', '$uniqname', '$kudoType', '$kudoTitle', '$kudoDesc')";
-        if ($db->query($sql) === true) {
-            $_SESSION['userEntry'] = $db->insert_id;
-        //echo "New record created successfully";
-            $userFname = "";
-            $userLname = "";
-            $kudoType = "";
-            $kudoTitle = "";
-            $kudoDesc = "";
-            unset($_POST["submit"]);
-            redirect_to("confirm.php");
-              exit();
-        } else {
-            die(db_fatal_error("Database query failed. "));
-        }
-            $db->close();
-    } catch (Exception $e) {
-        $result[] = $e->getMessage();
-    }
-}
+if (isset($_POST["confirmEntry"])) {
+  //do check related stuff
+  header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
+    exit();
+
+} elseif (isset($_POST["deleteentry"])) {
+  //user selected cancel button
+  // $sqlDEL = "DELETE FROM tbl_NELP_Register ";
+  // $sqlDEL .= "WHERE id = {$recordID} ";
+  // $sqlDEL .= "LIMIT 1";
+
+  //preserve entry but mark a cancelled"
+  $cancelquery  = "UPDATE tbl_kudos SET ";
+  $cancelquery .= "selectedDelete = 'deleted' ";
+  $cancelquery .= "WHERE id = {$recordID}";
+  if ($result = $db->query($cancelquery)) {
+    $db->close();
+  //sending user to an address outside of this webapp 
+  header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
+      exit(); 
+  } else {
+      die(db_fatal_error("Database query failed for cancel. "));
+  }
+
+} else {
+  $message = "Please review your information"; 
+ 
+  $sql = "SELECT * ";
+  $sql .= "FROM tbl_kudos ";
+  $sql .= "WHERE id=$recordID";
+
+  $result = $db->query($sql);
+
+  if ($result && $result->num_rows > 0 ) {
+
+      // 3. Use returned data (if any)
+      while($subject = mysqli_fetch_assoc($result)) {
+        // output data from each row
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,40 +86,37 @@ if (isset($_POST["submit"])) {
           <div id="headerBarBtm"></div>
           <div id="kudoForm" class="form">
             <h1>English Kudos</h1>
-            <form action="index.php" method="post">
+            <form action="confirm.php" method="post">
               <div id="userInfo" >
                 <div class="row-fluid clearfix">
                   <div class="form-group">
-                    <label for="userFname" >First name</label>
-                    <input class="form-control input-sm" type="text" tabindex="100" required id="userFname" name="userFname" autofocus />
-                    <label for="userLname">Last name</label>
-                    <input class="form-control input-sm" type="text" tabindex="110" required id="userLname" name="userLname" />
-                  </div>
-                  <hr>
-                  <label for="kudoType">Select a category:</label>
-                  <label class="radio">
-                    <input type="radio" tabindex="150" required name="kudoType" id="inlineRadiokudoType" value="Award"> Award
-                  </label>
-                  <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType2" value="Conf_Lect"> Conference / Lecture
-                  </label>
-                  <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Publication"> Publication
-                  </label>
-                  <div class="form-group">
-                    <label for="kudoTitle">Title / Name</label>
-                    <input class="form-control input-sm" type="text" tabindex="160" required id="kudoTitle" name="kudoTitle" />
-                    <label for="kudoDesc">Description <small><em>100 word limit</em></small></label>
-                    <textarea class="form-control input-sm" rows=5  tabindex="170" required id="kudoDesc" id="kudoDesc" name="kudoDesc"></textarea>
-                    Total word count: <span id="display_count">0</span> words. Words left: <span id="word_left">100</span>
+                    <label for="userFname" >First name</label><?php echo ": " . $subject['userFname']?><br>
+                    <label for="userLname">Last name</label><?php echo ": " . $subject['userLname']?><br>
+                    <?php if ($subject['kudoType'] == "Award" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Award<br>"; } ?>
+                    <?php if ($subject['kudoType'] == "Conf_Lect" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Conference / Lecture<br>"; } ?>
+                    <?php if ($subject['kudoType'] == "Publication" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Publication<br>"; } ?>
+                    <br>
+                    <label for="kudoDesc">Description</label><?php echo ": " . $subject['kudoDesc']?><br>
                   </div>
                 </div>
               </div>
-              <div id="submitBtn" class="row-fluid clearfix btnControl">
-                <button class="btn btn-success btn-xs" name="submit" id="submit" >Submit</button>
+
+               <div id="editentry">
+                <div class="row clearfix">
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <div class="well well-sm">
+                      <div class="text-center">
+                        <p>Confirm or delete this entry now.</p>
+                          <input class="btn btn-success btn-xs" type="submit" name="confirmEntry" value="Confirm" />
+                          <input class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Cancel your entry and return to your profile page" type="submit" name="deleteentry" value="Delete" />
+                          <p><em>Do not use the browser back button</em></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
-          </div>
+            </div>
           <div id="footerInnerWrap">
             <div class="footerClmn">
               <p><strong>Dept. of English Language and Literature</strong></p>
@@ -138,3 +144,7 @@ if (isset($_POST["submit"])) {
   <script type="text/javascript" src="js/myScript.js"></script>
 </body>
 </html>
+<?php }
+    }
+  }
+?>
