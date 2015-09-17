@@ -89,7 +89,7 @@ if (isset($_POST["submit"])) {
                   <hr>
                   <label for="kudoType">Select a category:</label>
                   <label class="radio">
-                    <input type="radio" tabindex="150" required name="kudoType" id="inlineRadiokudoType" value="Award"> Award
+                    <input type="radio" tabindex="150" required name="kudoType" id="inlineRadiokudoType" value="AwardPrize"> Award / Prize
                   </label>
                   <label class="radio">
                     <input type="radio" name="kudoType" id="inlineRadiokudoType2" value="Conf_Lect"> Conference / Lecture
@@ -97,8 +97,17 @@ if (isset($_POST["submit"])) {
                   <label class="radio">
                     <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Publication"> Publication
                   </label>
+                  <label class="radio">
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Publication"> Publication
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Fellowship"> Fellowship
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="other"> Other
+                  </label>
                   <div class="form-group">
-                    <label for="kudoTitle">Title / Name</label>
+                    <label for="kudoTitle">Title / Name of award, prize, conference,lecture, publication, fellowship, other:</label>
                     <input class="form-control input-sm" type="text" tabindex="160" required id="kudoTitle" name="kudoTitle" />
                     <label for="kudoDesc">Description <small><em>100 word limit</em></small></label>
                     <textarea class="form-control input-sm" rows=5  tabindex="170" required id="kudoDesc" id="kudoDesc" name="kudoDesc"></textarea>
