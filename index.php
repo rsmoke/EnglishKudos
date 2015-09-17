@@ -98,13 +98,10 @@ if (isset($_POST["submit"])) {
                     <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Publication"> Publication
                   </label>
                   <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Publication"> Publication
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType4" value="Fellowship"> Fellowship
                   </label>
                   <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="Fellowship"> Fellowship
-                  </label>
-                  <label class="radio">
-                    <input type="radio" name="kudoType" id="inlineRadiokudoType3" value="other"> Other
+                    <input type="radio" name="kudoType" id="inlineRadiokudoType5" value="Other"> Other
                   </label>
                   <div class="form-group">
                     <label for="kudoTitle">Title / Name of award, prize, conference,lecture, publication, fellowship, other:</label>
