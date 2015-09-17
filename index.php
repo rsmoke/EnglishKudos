@@ -76,7 +76,7 @@ if (isset($_POST["submit"])) {
           </header>
           <div id="headerBarBtm"></div>
           <div id="kudoForm" class="form">
-            <h1>English Kudos</h1>
+            <h1>Department Member News</h1>
             <form action="index.php" method="post">
               <div id="userInfo" >
                 <div class="row-fluid clearfix">
