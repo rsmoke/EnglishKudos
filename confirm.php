@@ -92,10 +92,13 @@ if (isset($_POST["confirmEntry"])) {
                   <div class="form-group">
                     <label for="userFname" >First name</label><?php echo ": " . $subject['userFname']?><br>
                     <label for="userLname">Last name</label><?php echo ": " . $subject['userLname']?><br>
-                    <?php if ($subject['kudoType'] == "Award" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Award<br>"; } ?>
+                    <?php if ($subject['kudoType'] == "AwardPrize" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Award / Prize<br>"; } ?>
                     <?php if ($subject['kudoType'] == "Conf_Lect" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Conference / Lecture<br>"; } ?>
                     <?php if ($subject['kudoType'] == "Publication" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Publication<br>"; } ?>
+                    <?php if ($subject['kudoType'] == "Fellowship" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Fellowship<br>"; } ?>
+                    <?php if ($subject['kudoType'] == "Other" ) { echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'>&nbsp;</span>Other<br>"; } ?>
                     <br>
+                    <label for="kudoDesc">Title / Name</label><?php echo ": " . $subject['kudoTitle']?><br>
                     <label for="kudoDesc">Description</label><?php echo ": " . $subject['kudoDesc']?><br>
                   </div>
                 </div>
