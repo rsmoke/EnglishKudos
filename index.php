@@ -4,6 +4,12 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configEnglishKudos.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
 
 $uniqname = $login_name;
+//if uniqname is in the admin list set $isAdmin variable
+$isAdmin = false;
+$admins = array("janej","dporter","janesull","rsmoke");
+if (in_array($uniqname, $admins)) {
+    $isAdmin = true;
+}
 
 if (isset($_POST["submit"])) {
 // form was submitted
@@ -130,6 +136,13 @@ if (isset($_POST["submit"])) {
             Phone: (734) 764-6330 Fax: (734) 763-3128</div>
           <div class="footerClmn">
             © 2015 <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a><br>
+<?php
+if ($isAdmin) {
+    echo "<a href='1441218826fileDownloader.php' id='dwnldBtn' class='btn btn-xs btn-info'>
+    <span style = 'color:#fff;' class= 'glyphicon glyphicon-save' aria-hidden='true'></span>
+    </a>";
+}
+?>
           </div>
         </div>
         <div class="clearAll"></div>
