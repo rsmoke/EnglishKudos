@@ -11,10 +11,6 @@ if (isset($_POST["confirmEntry"])) {
     exit();
 
 } elseif (isset($_POST["deleteentry"])) {
-  //user selected cancel button
-  // $sqlDEL = "DELETE FROM tbl_NELP_Register ";
-  // $sqlDEL .= "WHERE id = {$recordID} ";
-  // $sqlDEL .= "LIMIT 1";
 
   //preserve entry but mark a cancelled"
   $cancelquery  = "UPDATE tbl_kudos SET ";

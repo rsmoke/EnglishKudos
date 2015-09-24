@@ -107,7 +107,7 @@ if (isset($_POST["submit"])) {
                     <label for="kudoTitle">Title / Name of award, prize, conference,lecture, publication, fellowship, other:</label>
                     <input class="form-control input-sm" type="text" tabindex="160" required id="kudoTitle" name="kudoTitle" />
                     <label for="kudoDesc">Description <small><em>100 word limit</em></small></label>
-                    <textarea class="form-control input-sm" rows=5  tabindex="170" required id="kudoDesc" id="kudoDesc" name="kudoDesc"></textarea>
+                    <textarea class="form-control input-sm" rows=5  tabindex="170" id="kudoDesc" id="kudoDesc" name="kudoDesc" placeholder="optional"></textarea>
                     Total word count: <span id="display_count">0</span> words. Words left: <span id="word_left">100</span>
                   </div>
                 </div>
