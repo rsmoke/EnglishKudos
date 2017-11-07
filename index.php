@@ -6,7 +6,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
 $uniqname = $login_name;
 //if uniqname is in the admin list set $isAdmin variable
 $isAdmin = false;
-$admins = array("janej","dporter","janesull","rsmoke");
+$admins = array("janej","dporter","mitchelj","rsmoke","amyarger");
 if (in_array($uniqname, $admins)) {
     $isAdmin = true;
 }
@@ -126,7 +126,7 @@ if (isset($_POST["submit"])) {
           <div id="footerInnerWrap">
             <div class="footerClmn">
               <p><strong>Dept. of English Language and Literature</strong></p>
-              <p><a href="/english/" class="footerLinkFirst">home</a> 
+              <p><a href="/english/" class="footerLinkFirst">home</a>
               <a href="/english/mission_statement.asp" class="footerLink">mission statement</a><br>
               <a href="/english/sitemap.asp" class="footerLink">sitemap</a>
               <a href="/english/contact.asp" class="footerLink">contact</a></p>
