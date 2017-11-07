@@ -12,9 +12,9 @@ header('Content-Disposition: attachment; filename="EnglishKudos.csv"');
 $output = fopen('php://output', 'w');
 
 // output the column headings
-fputcsv($output, array('RecordID', 'Uniqname', 'First Name', 'Last Name', 'Title', 'Type of Kudo', 'Edited By', 'Deleted'));
+fputcsv($output, array('RecordID', 'Uniqname', 'First Name', 'Last Name', 'Title', 'Description', 'Type of Kudo', 'Datestamp'));
 
-if ($login_name === "janej" || $login_name === "janesull" || $login_name === "rsmoke" || $login_name === "dporter") {
+if ($login_name === "janej" || $login_name === "mitchelj" || $login_name === "rsmoke" || $login_name === "dporter" || $login_name === "amyarger") {
             $sqlSelect = <<<SQL
                 SELECT
                     id,
@@ -24,9 +24,9 @@ if ($login_name === "janej" || $login_name === "janesull" || $login_name === "rs
                     kudoTitle,
                     kudoDesc,
                     kudoType,
-                    edited,
-                    selectedDelete
+                    edited
                 FROM  tbl_kudos
+                WHERE selectedDelete = 0
                 ORDER BY userLname ASC
 SQL;
 
