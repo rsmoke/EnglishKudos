@@ -125,27 +125,24 @@ if (isset($_POST["submit"])) {
           </div>
           <div id="footerInnerWrap">
             <div class="footerClmn">
-              <p><strong>Dept. of English Language and Literature</strong></p>
-              <p><a href="/english/" class="footerLinkFirst">home</a>
-              <a href="/english/mission_statement.asp" class="footerLink">mission statement</a><br>
-              <a href="/english/sitemap.asp" class="footerLink">sitemap</a>
-              <a href="/english/contact.asp" class="footerLink">contact</a></p>
-            </div>
-            <div class="footerClmn">435 S. State Street, 3187 Angell Hall<br>
+              <p><a href="/english/" ><strong>Department of English Language and Literature</strong></a></p>
+              435 S. State Street, 3187 Angell Hall<br>
               Ann Arbor, MI 48109-1003 <br>
-            Phone: (734) 764-6330 Fax: (734) 763-3128</div>
-          <div class="footerClmn">
-            © 2015 <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a><br>
-<?php
-if ($isAdmin) {
-    echo "<a href='1441218826fileDownloader.php' id='dwnldBtn' class='btn btn-xs btn-info'>
-    <span style = 'color:#fff;' class= 'glyphicon glyphicon-save' aria-hidden='true'></span>
-    </a>";
-}
-?>
-          </div>
+              Phone: (734) 764-6330 Fax: (734) 763-3128 &nbsp;&nbsp;&nbsp;
+              <?php
+              if ($isAdmin) {
+                echo "<a href='1441218826fileDownloader.php' id='dwnldBtn' class='btn btn-xs btn-info'>
+                <span style = 'color:#fff;' class= 'glyphicon glyphicon-save' aria-hidden='true'></span>
+                </a>";
+              }
+              ?>
+            </div>
         </div>
+
         <div class="clearAll"></div>
+        <div class="copyright text-center">
+          © <?php echo date('Y') ?> <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a>
+        </div>
       </div>
       <div id="rightShadow"></div>
     </div>

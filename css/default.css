@@ -106,13 +106,13 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   color: #505d60;
-  float: left;
-  width: 200px;
+  margin: auto;
+  width: 300px;
   padding-top: 5px;
   padding-right: 7px;
   padding-bottom: 15px;
   padding-left: 8px;
-  min-height: 130px;
+  min-height: 100px;
 }
 .footerClmn p {
   margin: 0px;
@@ -137,7 +137,8 @@ button {
   border-left-style: solid;
   border-left-color: #CC9933;
 }
-.footerLinkFirst {
-  padding-right: 3px;
-}
+.copyright {
+  font-size: 11px;
+  padding-bottom: 5px;
 
+}
