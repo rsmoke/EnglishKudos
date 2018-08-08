@@ -7,27 +7,25 @@ $recordID = $_SESSION['userEntry'];
 
 if (isset($_POST["confirmEntry"])) {
   //do check related stuff
-  header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
+  header("Location: " . "https://gateway.lsa.umich.edu/english-portal/general-resources.html");
     exit();
-
 } elseif (isset($_POST["deleteentry"])) {
-
   //preserve entry but mark a cancelled"
   $cancelquery  = "UPDATE tbl_kudos SET ";
   $cancelquery .= "selectedDelete = 'deleted' ";
   $cancelquery .= "WHERE id = {$recordID}";
   if ($result = $db->query($cancelquery)) {
     $db->close();
-  //sending user to an address outside of this webapp 
-  header("Location: " . "https://webapps.lsa.umich.edu/english/secure/userservices/profile.asp");
-      exit(); 
+  //sending user to an address outside of this webapp
+  header("Location: " . "https://gateway.lsa.umich.edu/english-portal/general-resources.html");
+      exit();
   } else {
       die(db_fatal_error("Database query failed for cancel. "));
   }
 
 } else {
-  $message = "Please review your information"; 
- 
+  $message = "Please review your information";
+
   $sql = "SELECT * ";
   $sql .= "FROM tbl_kudos ";
   $sql .= "WHERE id=$recordID";
@@ -116,22 +114,19 @@ if (isset($_POST["confirmEntry"])) {
               </div>
             </form>
             </div>
-          <div id="footerInnerWrap">
-            <div class="footerClmn">
-              <p><strong>Dept. of English Language and Literature</strong></p>
-              <p><a href="/english/" class="footerLinkFirst">home</a> 
-              <a href="/english/mission_statement.asp" class="footerLink">mission statement</a><br>
-              <a href="/english/sitemap.asp" class="footerLink">sitemap</a>
-              <a href="/english/contact.asp" class="footerLink">contact</a></p>
-            </div>
-            <div class="footerClmn">435 S. State Street, 3187 Angell Hall<br>
-              Ann Arbor, MI 48109-1003 <br>
-            Phone: (734) 764-6330 Fax: (734) 763-3128</div>
-          <div class="footerClmn">
-            © 2015 <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a><br>
+            <div id="footerInnerWrap">
+              <div class="footerClmn">
+                <p><a href="/english/" ><strong>Department of English Language and Literature</strong></a></p>
+                435 S. State Street, 3187 Angell Hall<br>
+                Ann Arbor, MI 48109-1003 <br>
+                Phone: (734) 764-6330 Fax: (734) 763-3128
+              </div>
           </div>
-        </div>
-        <div class="clearAll"></div>
+
+          <div class="clearAll"></div>
+          <div class="copyright text-center">
+            © <?php echo date('Y') ?> <a href="http://www.regents.umich.edu/">Regents of the University of Michigan</a>
+          </div>
       </div>
       <div id="rightShadow"></div>
     </div>

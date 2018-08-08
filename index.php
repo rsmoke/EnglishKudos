@@ -3,14 +3,6 @@ session_start();
 require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configEnglishKudos.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
 
-$uniqname = $login_name;
-//if uniqname is in the admin list set $isAdmin variable
-$isAdmin = false;
-$admins = array("janej","dporter","mitchelj","rsmoke","amyarger");
-if (in_array($uniqname, $admins)) {
-    $isAdmin = true;
-}
-
 if (isset($_POST["submit"])) {
 // form was submitted
     $userFname = mysqli_real_escape_string($db, (trim($_POST["userFname"])));
