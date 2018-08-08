@@ -70,7 +70,7 @@ if (isset($_POST["submit"])) {
         <div id="leftShadow"></div>
         <div id="innerWrapper">
           <header>
-            <a href="http://www.lsa.umich.edu/english"><img src="img/banner.png" id="banner" width=388px height="85" alt="English Department website"></a><br>
+            <a href="<?php echo "$deptHomeURL";?>"><img src="img/banner.png" id="banner" width=388px height="85" alt="English Department website"></a><br>
           </header>
           <div id="headerBarBtm"></div>
           <div id="kudoForm" class="form">
@@ -117,7 +117,7 @@ if (isset($_POST["submit"])) {
           </div>
           <div id="footerInnerWrap">
             <div class="footerClmn">
-              <p><a href="/english/" ><strong><?php echo "$deptLngName";?></strong></a></p>
+              <p><a href="<?php echo "$deptHomeURL";?>" ><strong><?php echo "$deptLngName";?></strong></a></p>
               <?php echo "$addressStreet";?>, <?php echo "$address2";?> <?php echo "$addressBldg";?><br>
               Ann Arbor, MI <?php echo "$addressZip";?> <br>
               Phone: <?php echo "$addressPhone";?> Fax: <?php echo "$addressFax";?> &nbsp;&nbsp;&nbsp;

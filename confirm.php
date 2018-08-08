@@ -116,7 +116,7 @@ if (isset($_POST["confirmEntry"])) {
             </div>
             <div id="footerInnerWrap">
               <div class="footerClmn">
-                <p><a href="/english/" ><strong><?php echo "$deptLngName";?></strong></a></p>
+                <p><a href="<?php echo "$deptHomeURL";?>" ><strong><?php echo "$deptLngName";?></strong></a></p>
                 <?php echo "$addressStreet";?>, <?php echo "$address2";?> <?php echo "$addressBldg";?><br>
                 Ann Arbor, MI <?php echo "$addressZip";?> <br>
                 Phone: <?php echo "$addressPhone";?> Fax: <?php echo "$addressFax";?>
