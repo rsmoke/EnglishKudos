@@ -117,10 +117,10 @@ if (isset($_POST["submit"])) {
           </div>
           <div id="footerInnerWrap">
             <div class="footerClmn">
-              <p><a href="/english/" ><strong>Department of English Language and Literature</strong></a></p>
-              435 S. State Street, 3187 Angell Hall<br>
-              Ann Arbor, MI 48109-1003 <br>
-              Phone: (734) 764-6330 Fax: (734) 763-3128 &nbsp;&nbsp;&nbsp;
+              <p><a href="/english/" ><strong><?php echo "$deptLngName";?></strong></a></p>
+              <?php echo "$addressStreet";?>, <?php echo "$address2";?><?php echo "$addressBldg";?><br>
+              Ann Arbor, MI <?php echo "$addressZip";?> <br>
+              Phone: <?php echo "$addressPhone";?> Fax: <?php echo "$addressFax";?> &nbsp;&nbsp;&nbsp;
               <?php
               if ($isAdmin) {
                 echo "<a href='1441218826fileDownloader.php' id='dwnldBtn' class='btn btn-xs btn-info'>
