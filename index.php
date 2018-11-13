@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
     $kudoDesc = mysqli_real_escape_string($db, (trim($_POST["kudoDesc"])));
     //insert data into database
     try {
-        $sql = "INSERT INTO `tbl_kudos` (`userFname`, `userLname`, `uniqname`, `kudoType`, `kudoTitle`, `kudoDesc`) VALUES ('$userFname', '$userLname', '$uniqname', '$kudoType', '$kudoTitle', '$kudoDesc')";
+        $sql = "INSERT INTO `tbl_kudos` (`userFname`, `userLname`, `uniqname`, `kudoType`, `kudoTitle`, `kudoDesc`) VALUES ('$userFname', '$userLname', '$login_name', '$kudoType', '$kudoTitle', '$kudoDesc')";
         if ($db->query($sql) === true) {
             $_SESSION['userEntry'] = $db->insert_id;
         //echo "New record created successfully";
